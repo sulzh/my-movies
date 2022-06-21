@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const propTypes = {
-	children: PropTypes.func,
+type WarningTypes = {
+  children: React.ReactNode;
 };
 
-export default class Warning extends React.Component {
+export default class Warning extends React.Component<WarningTypes> {
 	state = {
 		isError: false,
 	};
@@ -20,5 +19,3 @@ export default class Warning extends React.Component {
 		return isError ? <div>Sorry, something went wrong.</div> : children;
 	}
 }
-
-Warning.propTypes = propTypes;
