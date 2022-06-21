@@ -1,7 +1,10 @@
 import React from 'react';
 
+// Styles
+import './styles.scss';
+
 type WarningTypes = {
-  children: React.ReactNode;
+	children: React.ReactNode;
 };
 
 export default class Warning extends React.Component<WarningTypes> {
@@ -16,6 +19,12 @@ export default class Warning extends React.Component<WarningTypes> {
 	render() {
 		const { isError } = this.state;
 		const { children } = this.props;
-		return isError ? <div>Sorry, something went wrong.</div> : children;
+		return isError ? (
+			<div className="error-boundary">
+				<span className="error-boundary__text">Sorry, something went wrong.</span>
+			</div>
+		) : (
+			children
+		);
 	}
 }

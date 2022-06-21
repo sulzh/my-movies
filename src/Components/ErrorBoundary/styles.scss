@@ -1,0 +1,9 @@
+.error-boundary {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&__text {
+		font-weight: bold;
+	}
+}

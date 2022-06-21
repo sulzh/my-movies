@@ -18,13 +18,19 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 			{
-				test: /\.css$/,
-				use: ['style-loader', 'css-loader'],
+				test: /\.(s(a|c)ss)$/,
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 				exclude: /node_modules/,
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|svg|jpg|png)$/,
+				loader: 'url-loader',
 			},
 		],
 	},
-	plugins: [new htmlWebpackPlugin({
-		template: './src/index.html',
-	})],
+	plugins: [
+		new htmlWebpackPlugin({
+			template: './src/index.html',
+		}),
+	],
 };

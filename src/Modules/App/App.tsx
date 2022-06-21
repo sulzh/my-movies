@@ -1,7 +1,8 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import './index.css';
+// Styles
+import './index.scss';
 
 const App = () => {
 	return (
