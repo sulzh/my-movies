@@ -4,6 +4,8 @@ import { hot } from 'react-hot-loader';
 import './index.css';
 
 const App = () => {
+
+asdasd
 	return (
 		<div>
 			<h1 className="title">Hello world!</h1>
