@@ -1,5 +1,4 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
 
 // Styles
 import './index.scss';
@@ -12,4 +11,4 @@ const App = () => {
 	);
 };
 
-export default hot(module)(App);
+export default App;

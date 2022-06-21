@@ -2,11 +2,11 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 
 // Components
-import App from './App';
+import App from './Main';
 
 describe('App', () => {
 	it('Render without errors', () => {
-		render(<App/>);
+		render(<App />);
 		cleanup();
 	});
 });
