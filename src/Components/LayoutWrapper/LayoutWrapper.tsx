@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
 
 // Components
-import Header from '../../components/Header/Header';
+import Header from '../Header/Header';
 // Styles
 import './styles.scss';
 
@@ -15,7 +15,9 @@ const LayoutWrapper = () => {
 	return (
 		<div className="page">
 			<Header />
-			<Outlet />
+			<div className="content">
+				<Outlet />
+			</div>
 		</div>
 	);
 };
