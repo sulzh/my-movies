@@ -8,6 +8,8 @@ import { store } from './app/store';
 // Components
 import App from './navigation/App';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+// Styles
+import './theme/index.scss';
 
 const root = createRoot(document.getElementById('app'));
 root.render(

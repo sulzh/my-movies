@@ -9,12 +9,14 @@ import './styles.scss';
 const Header = () => {
 	return (
 		<div className="header">
-			<NavLink to={navigation.main} className="header__link header__logo">
-				MyMovies
-			</NavLink>
-			<NavLink to={navigation.favorites} className="header__link">
-				Favorites
-			</NavLink>
+			<div className="header__wrapper container">
+				<NavLink to={navigation.main} className="header__link header__logo">
+					MyMovies
+				</NavLink>
+				<NavLink to={navigation.favorites} className="header__link">
+					Favorites
+				</NavLink>
+			</div>
 		</div>
 	);
 };
