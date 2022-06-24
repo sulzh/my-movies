@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
+// Store
+import { useAppDispatch, useAppSelector } from '../../app/store';
+import { deleteMovie, setMovie } from '../../pages/Favorites/store';
 // Styles
 import './styles.scss';
 
@@ -13,9 +17,21 @@ type MovieCardTypes = {
 };
 
 const MovieCard = (props: MovieCardTypes) => {
-	const { id, poster_path, original_title, release_date, vote_average } = props;
+	const dispatch = useAppDispatch();
+	const favoriteMovies = useAppSelector(
+		(state) => state.favorites.favoriteMovies
+	);
 
-	const [like, setLike] = useState(false);
+	const { id, poster_path, original_title, release_date, vote_average } = props;
+	const like = favoriteMovies.includes(`${id}`);
+
+	const toggleLike = () => {
+		if (like) {
+			dispatch(deleteMovie(id));
+		} else {
+			dispatch(setMovie(id));
+		}
+	};
 
 	return (
 		<div className="movie-card">
@@ -23,7 +39,7 @@ const MovieCard = (props: MovieCardTypes) => {
 				{poster_path ? (
 					<img
 						className="movie-card__poster"
-						src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+						src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
 						alt={`${original_title} poster`}
 					/>
 				) : (
@@ -32,7 +48,7 @@ const MovieCard = (props: MovieCardTypes) => {
 				<div className="movie-card__info">
 					<Link
 						className="movie-card__link"
-						to={{ pathname: '/movie', search: `?id=${id}` }}
+						to={{ pathname: '/movie', search: `id=${id}` }}
 					>
 						<h2 className="movie-card__title">{original_title}</h2>
 					</Link>
@@ -41,12 +57,13 @@ const MovieCard = (props: MovieCardTypes) => {
 							<span className="movie-card__rate">{`Rate: ${vote_average}`}</span>
 							<span className="movie-card__date">{`Date: ${release_date}`}</span>
 						</div>
-						<button
-							className={
-								like ? 'movie__like movie-card__like_active' : 'movie-card__like'
-							}
-							onClick={() => setLike((l) => !l)}
-						/>
+						<button className="movie-card__like" onClick={toggleLike}>
+							{like ? (
+								<FaHeart size={24} color="#f44336" />
+							) : (
+								<FaRegHeart size={24} color="#0006f5" />
+							)}
+						</button>
 					</div>
 				</div>
 			</div>

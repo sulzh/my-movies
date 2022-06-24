@@ -17,6 +17,7 @@ export const searchService = createApi({
 					page: 1,
 				},
 			}),
+			transformResponse: (response: any) => response.results,
 		}),
 	}),
 });

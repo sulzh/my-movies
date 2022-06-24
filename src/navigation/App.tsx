@@ -6,6 +6,7 @@ import { navigation } from './constants';
 // Components
 import Main from '../pages/Main/Main';
 import Movie from '../pages/Movie/Movie';
+import Search from '../pages/Search/Search';
 import Favorites from '../pages/Favorites/Favorites';
 import Layout from '../components/LayoutWrapper/LayoutWrapper';
 
@@ -16,6 +17,7 @@ const App = () => {
 				<Route path={navigation.main} element={<Layout />}>
 					<Route index element={<Main />} />
 					<Route path={navigation.movie} element={<Movie />} />
+					<Route path={navigation.search} element={<Search />} />
 					<Route path={navigation.favorites} element={<Favorites />} />
 					<Route path="*" element={<Main />} />
 				</Route>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaRegHeart } from 'react-icons/fa';
 
 // Constants
 import { navigation } from '../../navigation/constants';
@@ -14,7 +15,7 @@ const Header = () => {
 					MyMovies
 				</NavLink>
 				<NavLink to={navigation.favorites} className="header__link">
-					Favorites
+					<FaRegHeart size={26} color="#000000" />
 				</NavLink>
 			</div>
 		</div>

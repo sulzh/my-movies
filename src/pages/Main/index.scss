@@ -1,8 +1,35 @@
 .main-page {
-	padding-top: 60px;
-}
+	&__block {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 
-.movie-list {
-	display: flex;
-	flex-wrap: wrap;
+	&__slider {
+		padding-top: 50px;
+	}
+
+	.search-bar {
+		padding-top: 40px;
+	}
+
+	.swiper-slide {
+		width: auto;
+	}
+
+	.swiper-button-prev {
+		left: 20px;
+	}
+
+	.swiper-button-next {
+		right: 20px;
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		color: #ffffff;
+	}
+
+	.swiper-button-disabled {
+		pointer-events: unset;
+	}
 }

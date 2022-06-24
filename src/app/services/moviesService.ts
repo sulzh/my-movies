@@ -14,14 +14,39 @@ export const moviesService = createApi({
 				params: { api_key: API_KEY },
 			}),
 		}),
+		getAllMovies: builder.query<string[], string[]>({
+			queryFn: async (movies: any, api, extra, fetchWithBQ) => {
+				const promises = [];
+
+				for (const id of movies) {
+					promises.push(fetchWithBQ(`${id}?api_key=${API_KEY}`));
+				}
+
+				const result = await Promise.all(promises);
+				return { data: result.map((r) => r.data) };
+			},
+		}),
 		getPopularMovies: builder.query({
 			query: (page: number) => ({
 				url: 'popular',
 				method: 'GET',
 				params: { api_key: API_KEY, page },
 			}),
+			transformResponse: (response: any) => response.results,
+		}),
+		getMovieImages: builder.query({
+			query: (id: string) => ({
+				url: `${id}/images`,
+				method: 'GET',
+				params: { api_key: API_KEY },
+			}),
 		}),
 	}),
 });
 
-export const { useGetMovieQuery, useGetPopularMoviesQuery } = moviesService;
+export const {
+	useGetMovieQuery,
+	useGetMovieImagesQuery,
+	useLazyGetAllMoviesQuery,
+	useGetPopularMoviesQuery,
+} = moviesService;

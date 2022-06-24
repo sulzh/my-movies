@@ -1,0 +1,11 @@
+.favorites-page {
+	&__block {
+		display: flex;
+		flex-wrap: wrap;
+		padding-top: 50px;
+	}
+
+	.movie-card {
+		width: 25%;
+	}
+}
