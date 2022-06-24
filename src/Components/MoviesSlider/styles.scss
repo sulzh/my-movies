@@ -1,0 +1,41 @@
+.movies-slider {
+	&__slider {
+		padding-top: 85px;
+	}
+
+	&__title {
+		position: absolute;
+		top: 25px;
+		left: 20px;
+	}
+
+	.heading {
+		position: relative;
+		padding: 0;
+	}
+
+	.search-bar {
+		padding-top: 40px;
+	}
+
+	.swiper-slide {
+		width: auto;
+	}
+
+	.swiper-button-prev {
+		left: 70px;
+	}
+
+	.swiper-button-next {
+		right: 70px;
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		color: #ffffff;
+	}
+
+	.swiper-button-disabled {
+		pointer-events: unset;
+	}
+}

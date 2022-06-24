@@ -1,17 +1,6 @@
-@import '../../theme/variables.scss';
-
 .movie-page {
-	&__img {
-		width: 100%;
-		height: 100%;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		object-fit: cover;
-	}
-
-	&__slider {
-		height: 400px;
+	&__header {
+		display: flex;
 	}
 
 	&__description {
@@ -32,11 +21,11 @@
 		letter-spacing: 0.5px;
 	}
 
-	.swiper-pagination {
-		bottom: 0;
+	&__recommendations {
+		padding-top: 35px;
 	}
 
-	.swiper-pagination-bullet-active {
-		background-color: $blue-color;
+	.heading__title {
+		padding-right: 10px;
 	}
 }

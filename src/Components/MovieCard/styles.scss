@@ -95,12 +95,6 @@
 		line-height: 20px;
 		letter-spacing: 0.5px;
 	}
-
-	&__like {
-		display: block;
-		cursor: pointer;
-		z-index: 2;
-	}
 }
 
 @media only screen and (max-width: $tablet-viewport) {
@@ -145,10 +139,6 @@
 		&__date,
 		&__rate {
 			font-size: 14px;
-		}
-
-		&__like {
-			transform: none;
 		}
 	}
 }
