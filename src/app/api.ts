@@ -1,8 +1,8 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const API_KEY = 'e8b2b9d1a810a529d76a8fb24caa84df';
+import { TMDB_URL } from '../utils/constants';
 
-export const getTheMovieDBBaseQuery = (apiEndpoint: string) =>
+export const fetchTMDBBaseQuery = (apiEndpoint: string) =>
 	fetchBaseQuery({
-		baseUrl: `https://api.themoviedb.org/3/${apiEndpoint}/`,
+		baseUrl: `${TMDB_URL}${apiEndpoint}/`,
 	});

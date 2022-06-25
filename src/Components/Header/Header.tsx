@@ -7,7 +7,7 @@ import { navigation } from '../../navigation/constants';
 // Styles
 import './styles.scss';
 
-const Header = () => {
+const Header: React.FC = () => {
 	return (
 		<div className="header">
 			<div className="header__wrapper container">

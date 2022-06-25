@@ -1,20 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Constants
+import { POSTER_URL } from '../../utils/constants';
+// Models
+import { Movie } from '../../utils/models';
 // Components
 import Like from '../Like/Like';
 // Styles
 import './styles.scss';
 
-type MovieCardTypes = {
-	id: number;
-	poster_path: string;
-	original_title: string;
-	release_date: string;
-	vote_average: number;
-};
-
-const MovieCard = (props: MovieCardTypes) => {
+const MovieCard: React.FC<Movie> = (props) => {
 	const { id, poster_path, original_title, release_date, vote_average } = props;
 
 	return (
@@ -23,7 +19,7 @@ const MovieCard = (props: MovieCardTypes) => {
 				{poster_path ? (
 					<img
 						className="movie-card__poster"
-						src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+						src={`${POSTER_URL}${poster_path}`}
 						alt={`${original_title} poster`}
 					/>
 				) : (

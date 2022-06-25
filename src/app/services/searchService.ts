@@ -1,11 +1,15 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
+// Constants
+import { API_KEY } from '../../utils/constants';
+// Models
+import { BaseMoviesResponceInterface } from '../models';
 // API
-import { getTheMovieDBBaseQuery, API_KEY } from '../api';
+import { fetchTMDBBaseQuery } from '../api';
 
 export const searchService = createApi({
 	reducerPath: 'search',
-	baseQuery: getTheMovieDBBaseQuery('search'),
+	baseQuery: fetchTMDBBaseQuery('search'),
 	endpoints: (builder) => ({
 		searchMovies: builder.query({
 			query: (query: string) => ({
@@ -17,7 +21,8 @@ export const searchService = createApi({
 					page: 1,
 				},
 			}),
-			transformResponse: (response: any) => response.results,
+			transformResponse: (response: BaseMoviesResponceInterface) =>
+				response.results,
 		}),
 	}),
 });

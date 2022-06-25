@@ -1,6 +1,7 @@
 .movie-page {
 	&__header {
 		display: flex;
+		align-items: flex-start;
 	}
 
 	&__description {

@@ -7,7 +7,7 @@ type SpinnerTypes = {
 	isSpinning: boolean;
 };
 
-const Spinner = (props: SpinnerTypes) => {
+const Spinner: React.FC<SpinnerTypes> = (props) => {
 	const { isSpinning } = props;
 
 	if (!isSpinning) {

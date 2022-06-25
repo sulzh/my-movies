@@ -1,17 +1,12 @@
 .movies-slider {
 	&__slider {
-		padding-top: 85px;
-	}
-
-	&__title {
-		position: absolute;
-		top: 25px;
-		left: 20px;
+		padding-top: 35px;
 	}
 
 	.heading {
 		position: relative;
-		padding: 0;
+		padding-top: 10px;
+		padding-bottom: 0;
 	}
 
 	.search-bar {

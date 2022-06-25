@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+// Models
+import { Movie } from '../../utils/models';
 // Components
 import Spinner from '../../components/Spinner/Spinner';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -10,7 +12,7 @@ import { useSearchMoviesQuery } from '../../app/services/searchService';
 // Styles
 import './index.scss';
 
-const Search = () => {
+const Search: React.FC = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const query = searchParams.get('query');
 	const { data, isLoading } = useSearchMoviesQuery(query);
@@ -33,7 +35,7 @@ const Search = () => {
 			<div className="search-page__block">
 				{data &&
 					data.length > 0 &&
-					data.map((d: any) => <MovieCard key={d.id} {...d} />)}
+					data.map((d: Movie) => <MovieCard key={d.id} {...d} />)}
 			</div>
 			<Spinner isSpinning={isLoading} />
 		</div>

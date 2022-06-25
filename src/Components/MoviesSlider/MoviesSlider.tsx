@@ -4,24 +4,26 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 
+// Models
+import { Movie } from '../../utils/models';
 // Components
 import MovieCard from '../MovieCard/MovieCard';
 // Styles
 import './styles.scss';
 
 type MoviesSliderTypes = {
-	data: any;
+	data: Movie[];
 	title?: string;
 };
 
-const MoviesSlider = (props: MoviesSliderTypes) => {
+const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
 	const { data, title } = props;
 
 	if (!data || data.length === 0) {
 		return null;
 	}
 
-	const renderMovie = (movie: any) => (
+	const renderMovie = (movie: Movie) => (
 		<SwiperSlide key={movie.id}>
 			<MovieCard {...movie} />
 		</SwiperSlide>

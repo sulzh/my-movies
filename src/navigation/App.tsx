@@ -10,7 +10,7 @@ import Search from '../pages/Search/Search';
 import Favorites from '../pages/Favorites/Favorites';
 import Layout from '../components/LayoutWrapper/LayoutWrapper';
 
-const App = () => {
+const App: React.FC = () => {
 	return (
 		<BrowserRouter>
 			<Routes>

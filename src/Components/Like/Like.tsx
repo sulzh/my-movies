@@ -11,7 +11,7 @@ type LikeTypes = {
 	id: number;
 };
 
-const Like = (props: LikeTypes) => {
+const Like: React.FC<LikeTypes> = (props) => {
 	const { id } = props;
 	const dispatch = useAppDispatch();
 	const favoriteMovies = useAppSelector(

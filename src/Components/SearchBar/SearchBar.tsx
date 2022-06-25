@@ -9,11 +9,11 @@ type SearchBarTypes = {
 	onSubmit: (s: string) => void;
 };
 
-const SearchBar = (props: SearchBarTypes) => {
+const SearchBar: React.FC<SearchBarTypes> = (props) => {
 	const { query, onSubmit } = props;
 	const [inputValue, setInputValue] = useState(query || '');
 
-	const handleOnSubmit = (e: any) => {
+	const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		onSubmit(inputValue);
 	};

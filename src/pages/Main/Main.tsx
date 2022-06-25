@@ -12,7 +12,7 @@ import MoviesSlider from '../../components/MoviesSlider/MoviesSlider';
 // Styles
 import './index.scss';
 
-const Main = () => {
+const Main: React.FC = () => {
 	const navigate = useNavigate();
 	const { data, isLoading } = useGetPopularMoviesQuery(1);
 

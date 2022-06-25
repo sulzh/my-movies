@@ -7,48 +7,43 @@ import Spinner from '../../components/Spinner/Spinner';
 import Gallery from '../../components/Gallery/Gallery';
 import MoviesSlider from '../../components/MoviesSlider/MoviesSlider';
 // Store
-import {
-	useGetMovieQuery,
-	useGetMovieImagesQuery,
-	useGetRecommendationsQuery,
-} from '../../app/services/moviesService';
+import { useGetMovieQuery } from '../../app/services/moviesService';
 // Styles
 import './styles.scss';
 
-const Movie = () => {
+const Movie: React.FC = () => {
 	const location = useLocation();
 	const params = new URLSearchParams(location.search);
 	const movieId = params.get('id');
-	const movie = useGetMovieQuery(movieId);
-	const movieImgs = useGetMovieImagesQuery(movieId);
-	const recommendations = useGetRecommendationsQuery(movieId);
+	const { data, isLoading } = useGetMovieQuery(movieId);
 
 	return (
 		<div className="movie-page">
-			{movie.data && (
-				<div className="heading container">
-					<div className="movie-page__header">
-						<h1 className="heading__title">{movie.data.original_title}</h1>
-						<Like id={Number(movieId)} />
+			{data && !isLoading && (
+				<>
+					<div className="heading container">
+						<div className="movie-page__header">
+							<h1 className="heading__title">{data.movie.original_title}</h1>
+							<Like id={Number(movieId)} />
+						</div>
+						<div className="movie-page__info">
+							<span className="movie-page__rate">
+								{`Rate: ${data.movie.vote_average}`}
+							</span>
+							<span className="movie-page__date">
+								{`Date: ${data.movie.release_date}`}
+							</span>
+						</div>
+						<p className="movie-page__description">{data.movie.overview}</p>
 					</div>
-					<div className="movie-page__info">
-						<span className="movie-page__rate">
-							{`Rate: ${movie.data.vote_average}`}
-						</span>
-						<span className="movie-page__date">
-							{`Date: ${movie.data.release_date}`}
-						</span>
-					</div>
-					<p className="movie-page__description">{movie.data.overview}</p>
-				</div>
+					<Gallery data={data.images.backdrops} />
+					<MoviesSlider
+						title="Recommendations"
+						data={data.recommendations.results}
+					/>
+				</>
 			)}
-			<Gallery data={movieImgs.data && movieImgs.data.backdrops} />
-			<MoviesSlider title="Recommendations" data={recommendations.data} />
-			<Spinner
-				isSpinning={
-					movie.isLoading || movieImgs.isLoading || recommendations.isLoading
-				}
-			/>
+			<Spinner isSpinning={isLoading} />
 		</div>
 	);
 };
