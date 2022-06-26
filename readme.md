@@ -1,1 +1,1 @@
-# React Boilerplate
+# Movies app

@@ -8,18 +8,18 @@ import Header from '../Header/Header';
 import './styles.scss';
 
 const propTypes = {
-	children: PropTypes.instanceOf(Object),
+  children: PropTypes.instanceOf(Object),
 };
 
 const LayoutWrapper = () => {
-	return (
-		<div className="page">
-			<Header />
-			<div className="content">
-				<Outlet />
-			</div>
-		</div>
-	);
+  return (
+    <div className="page">
+      <Header />
+      <div className="content">
+        <Outlet />
+      </div>
+    </div>
+  );
 };
 
 LayoutWrapper.propTypes = propTypes;

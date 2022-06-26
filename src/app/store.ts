@@ -8,16 +8,16 @@ import { searchService } from './services/searchService';
 import favoritesSlice from '../pages/Favorites/store';
 
 export const store = configureStore({
-	reducer: {
-		[moviesService.reducerPath]: moviesService.reducer,
-		[searchService.reducerPath]: searchService.reducer,
-		favorites: favoritesSlice,
-	},
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(
-			moviesService.middleware,
-			searchService.middleware
-		),
+  reducer: {
+    [moviesService.reducerPath]: moviesService.reducer,
+    [searchService.reducerPath]: searchService.reducer,
+    favorites: favoritesSlice,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(
+      moviesService.middleware,
+      searchService.middleware
+    ),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,36 +1,36 @@
 {
-	"parser": "@typescript-eslint/parser",
-	"env": {
-		"commonjs": true,
-		"browser": true,
-		"es2021": true,
-		"node": true,
-		"jest": true
-	},
-	"settings": {
-		"react": {
-			"version": "^18.2.0"
-		}
-	},
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended",
-		"plugin:jsx-a11y/recommended",
-		"plugin:react-hooks/recommended",
-		"plugin:@typescript-eslint/recommended"
-	],
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": "latest",
-		"sourceType": "module"
-	},
-	"plugins": ["react", "jsx-a11y", "react-hooks", "@typescript-eslint"],
-	"rules": {
-		"indent": ["error", "tab"],
-		"linebreak-style": ["error", "unix"],
-		"quotes": ["error", "single"],
-		"semi": ["error", "always"]
-	}
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "commonjs": true,
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "version": "^18.2.0"
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "jsx-a11y", "react-hooks", "@typescript-eslint"],
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
+  }
 }

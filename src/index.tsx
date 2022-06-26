@@ -13,11 +13,11 @@ import './theme/index.scss';
 
 const root = createRoot(document.getElementById('app'));
 root.render(
-	<React.StrictMode>
-		<Provider store={store}>
-			<ErrorBoundary>
-				<App />
-			</ErrorBoundary>
-		</Provider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </Provider>
+  </React.StrictMode>
 );

@@ -3,28 +3,37 @@ import React from 'react';
 // Styles
 import './styles.scss';
 
-type WarningTypes = {
-	children: React.ReactNode;
+type WarningProps = {
+  children: React.ReactNode;
 };
 
-export default class Warning extends React.Component<WarningTypes> {
-	state = {
-		isError: false,
-	};
+type WarningState = {
+  isError: boolean;
+};
 
-	static getDerivedStateFromError() {
-		return { isError: true };
-	}
+export default class Warning extends React.Component<
+  WarningProps,
+  WarningState
+> {
+  state: WarningState = {
+    isError: false,
+  };
 
-	render() {
-		const { isError } = this.state;
-		const { children } = this.props;
-		return isError ? (
-			<div className="error-boundary">
-				<span className="error-boundary__text">Sorry, something went wrong.</span>
-			</div>
-		) : (
-			children
-		);
-	}
+  static getDerivedStateFromError() {
+    return { isError: true };
+  }
+
+  render() {
+    const { isError } = this.state;
+    const { children } = this.props;
+    return isError ? (
+      <div className="error-boundary">
+        <span className="error-boundary__text">
+          Sorry, something went wrong.
+        </span>
+      </div>
+    ) : (
+      children
+    );
+  }
 }

@@ -4,24 +4,24 @@ import React from 'react';
 import './styles.scss';
 
 type SpinnerTypes = {
-	isSpinning: boolean;
+  isSpinning: boolean;
 };
 
 const Spinner: React.FC<SpinnerTypes> = (props) => {
-	const { isSpinning } = props;
+  const { isSpinning } = props;
 
-	if (!isSpinning) {
-		return null;
-	}
+  if (!isSpinning) {
+    return null;
+  }
 
-	return (
-		<div className="spinner">
-			<div />
-			<div />
-			<div />
-			<div />
-		</div>
-	);
+  return (
+    <div className="spinner">
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  );
 };
 
 export default Spinner;

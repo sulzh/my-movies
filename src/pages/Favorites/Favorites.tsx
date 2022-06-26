@@ -12,30 +12,30 @@ import { useLazyGetAllMoviesQuery } from '../../app/services/moviesService';
 import './index.scss';
 
 const Favorites: React.FC = () => {
-	const favoriteMovies = useAppSelector(
-		(state) => state.favorites.favoriteMovies
-	);
-	const [fetchFavoriteMovies, { data, isLoading }] = useLazyGetAllMoviesQuery();
+  const favoriteMovies = useAppSelector(
+    (state) => state.favorites.favoriteMovies
+  );
+  const [fetchFavoriteMovies, { data, isLoading }] = useLazyGetAllMoviesQuery();
 
-	useEffect(() => {
-		if (favoriteMovies.length > 0) {
-			fetchFavoriteMovies(favoriteMovies);
-		}
-	}, [favoriteMovies, fetchFavoriteMovies]);
+  useEffect(() => {
+    if (favoriteMovies.length > 0) {
+      fetchFavoriteMovies(favoriteMovies);
+    }
+  }, [favoriteMovies, fetchFavoriteMovies]);
 
-	return (
-		<div className="favorites-page container">
-			<div className="heading container">
-				<h1 className="heading__title">Favorite movies</h1>
-			</div>
-			<div className="favorites-page__block">
-				{data &&
-					data.length > 0 &&
-					data.map((d: Movie) => <MovieCard key={d.id} {...d} />)}
-			</div>
-			<Spinner isSpinning={isLoading} />
-		</div>
-	);
+  return (
+    <div className="favorites-page container">
+      <div className="heading container">
+        <h1 className="heading__title">Favorite movies</h1>
+      </div>
+      <div className="favorites-page__block">
+        {data &&
+          data.length > 0 &&
+          data.map((d: Movie) => <MovieCard key={d.id} {...d} />)}
+      </div>
+      <Spinner isSpinning={isLoading} />
+    </div>
+  );
 };
 
 export default Favorites;

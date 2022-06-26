@@ -8,34 +8,34 @@ import { deleteMovie, setMovie } from '../../pages/Favorites/store';
 import './styles.scss';
 
 type LikeTypes = {
-	id: number;
+  id: number;
 };
 
 const Like: React.FC<LikeTypes> = (props) => {
-	const { id } = props;
-	const dispatch = useAppDispatch();
-	const favoriteMovies = useAppSelector(
-		(state) => state.favorites.favoriteMovies
-	);
-	const isLiked = favoriteMovies.includes(`${id}`);
+  const { id } = props;
+  const dispatch = useAppDispatch();
+  const favoriteMovies = useAppSelector(
+    (state) => state.favorites.favoriteMovies
+  );
+  const isLiked = favoriteMovies.includes(`${id}`);
 
-	const toggleLike = () => {
-		if (isLiked) {
-			dispatch(deleteMovie(id));
-		} else {
-			dispatch(setMovie(id));
-		}
-	};
+  const toggleLike = () => {
+    if (isLiked) {
+      dispatch(deleteMovie(id));
+    } else {
+      dispatch(setMovie(id));
+    }
+  };
 
-	return (
-		<button className="like" onClick={toggleLike}>
-			{isLiked ? (
-				<FaHeart size={24} color="#f44336" />
-			) : (
-				<FaRegHeart size={24} color="#0006f5" />
-			)}
-		</button>
-	);
+  return (
+    <button className="like" onClick={toggleLike}>
+      {isLiked ? (
+        <FaHeart size={24} color="#f44336" />
+      ) : (
+        <FaRegHeart size={24} color="#0006f5" />
+      )}
+    </button>
+  );
 };
 
 export default Like;

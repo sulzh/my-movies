@@ -11,19 +11,19 @@ import Favorites from '../pages/Favorites/Favorites';
 import Layout from '../components/LayoutWrapper/LayoutWrapper';
 
 const App: React.FC = () => {
-	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path={navigation.main} element={<Layout />}>
-					<Route index element={<Main />} />
-					<Route path={navigation.movie} element={<Movie />} />
-					<Route path={navigation.search} element={<Search />} />
-					<Route path={navigation.favorites} element={<Favorites />} />
-					<Route path="*" element={<Main />} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={navigation.main} element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path={navigation.movie} element={<Movie />} />
+          <Route path={navigation.search} element={<Search />} />
+          <Route path={navigation.favorites} element={<Favorites />} />
+          <Route path="*" element={<Main />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

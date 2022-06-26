@@ -12,41 +12,41 @@ import { Backdrop } from '../../utils/models';
 import './styles.scss';
 
 type MoviesSliderTypes = {
-	data: Backdrop[];
+  data: Backdrop[];
 };
 
 const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
-	const { data } = props;
+  const { data } = props;
 
-	if (!data || data.length === 0) {
-		return null;
-	}
+  if (!data || data.length === 0) {
+    return null;
+  }
 
-	const renderImage = ({ file_path }: Backdrop, i: number) => (
-		<SwiperSlide key={`img-${i}`}>
-			<div
-				className="gallery__img"
-				style={{
-					backgroundImage: `url("${IMG_URL}${file_path}")`,
-				}}
-			/>
-		</SwiperSlide>
-	);
+  const renderImage = ({ file_path }: Backdrop, i: number) => (
+    <SwiperSlide key={`img-${i}`}>
+      <div
+        className="gallery__img"
+        style={{
+          backgroundImage: `url("${IMG_URL}${file_path}")`,
+        }}
+      />
+    </SwiperSlide>
+  );
 
-	return (
-		<div className="gallery">
-			<Swiper
-				modules={[Pagination]}
-				pagination={{ clickable: true }}
-				spaceBetween={0}
-				slidesPerGroup={1}
-				slidesPerView={3}
-				className="gallery__slider"
-			>
-				{data.map(renderImage)}
-			</Swiper>
-		</div>
-	);
+  return (
+    <div className="gallery">
+      <Swiper
+        modules={[Pagination]}
+        pagination={{ clickable: true }}
+        spaceBetween={0}
+        slidesPerGroup={1}
+        slidesPerView={3}
+        className="gallery__slider"
+      >
+        {data.map(renderImage)}
+      </Swiper>
+    </div>
+  );
 };
 
 export default MoviesSlider;
