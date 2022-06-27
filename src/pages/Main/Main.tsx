@@ -10,7 +10,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import Spinner from '../../components/Spinner/Spinner';
 import MoviesSlider from '../../components/MoviesSlider/MoviesSlider';
 // Styles
-import './index.scss';
+import './styles.scss';
 
 const Main: React.FC = () => {
   const navigate = useNavigate();

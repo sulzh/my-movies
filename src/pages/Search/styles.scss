@@ -1,0 +1,15 @@
+.search-page {
+  &__block {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 50px;
+  }
+
+  .search-bar {
+    padding-top: 40px;
+  }
+
+  .movie-card {
+    width: 25%;
+  }
+}

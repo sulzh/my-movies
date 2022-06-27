@@ -1,15 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const lsMovies = localStorage.getItem('favMovies');
-
-interface FavoritesState {
+export interface FavoritesState {
   filterValue: string;
   favoriteMovies: string[];
 }
 
 const initialState: FavoritesState = {
   filterValue: '',
-  favoriteMovies: lsMovies ? lsMovies.split(',') : [],
+  favoriteMovies: [],
 };
 
 export const favoritesSlice = createSlice({

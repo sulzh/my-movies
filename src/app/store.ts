@@ -5,7 +5,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { moviesService } from './services/moviesService';
 import { searchService } from './services/searchService';
 // Slices
-import favoritesSlice from '../pages/Favorites/store';
+import favoritesSlice from '../pages/Favorites/store/favoritesSlice';
 
 export const store = configureStore({
   reducer: {

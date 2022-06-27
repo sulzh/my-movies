@@ -3,7 +3,10 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 // Store
 import { useAppDispatch, useAppSelector } from '../../app/store';
-import { deleteMovie, setMovie } from '../../pages/Favorites/store';
+import {
+  deleteMovie,
+  setMovie,
+} from '../../pages/Favorites/store/favoritesSlice';
 // Styles
 import './styles.scss';
 

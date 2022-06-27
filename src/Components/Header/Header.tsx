@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaRegHeart } from 'react-icons/fa';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 // Constants
 import { navigation } from '../../navigation/constants';
@@ -8,6 +8,13 @@ import { navigation } from '../../navigation/constants';
 import './styles.scss';
 
 const Header: React.FC = () => {
+  const renderFavoriteIcon = (isActive: boolean) =>
+    isActive ? (
+      <FaHeart size={24} color="#f44336" />
+    ) : (
+      <FaRegHeart size={24} color="#0006f5" />
+    );
+
   return (
     <div className="header">
       <div className="header__wrapper container">
@@ -15,7 +22,7 @@ const Header: React.FC = () => {
           MyMovies
         </NavLink>
         <NavLink to={navigation.favorites} className="header__link">
-          <FaRegHeart size={26} color="#000000" />
+          {({ isActive }) => renderFavoriteIcon(isActive)}
         </NavLink>
       </div>
     </div>

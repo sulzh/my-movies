@@ -10,7 +10,7 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 // Store
 import { useSearchMoviesQuery } from '../../app/services/searchService';
 // Styles
-import './index.scss';
+import './styles.scss';
 
 const Search: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -15,11 +15,11 @@ const Movie: React.FC = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const movieId = params.get('id');
-  const { data, isLoading } = useGetMovieQuery(movieId);
+  const { data, isFetching } = useGetMovieQuery(movieId);
 
   return (
     <div className="movie-page">
-      {data && !isLoading && (
+      {data && !isFetching && (
         <>
           <div className="heading container">
             <div className="movie-page__header">
@@ -43,7 +43,7 @@ const Movie: React.FC = () => {
           />
         </>
       )}
-      <Spinner isSpinning={isLoading} />
+      <Spinner isSpinning={isFetching} />
     </div>
   );
 };
