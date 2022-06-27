@@ -60,6 +60,6 @@ export const moviesService = createApi({
 
 export const {
   useGetMovieQuery,
-  useLazyGetAllMoviesQuery,
+  useGetAllMoviesQuery,
   useGetPopularMoviesQuery,
 } = moviesService;

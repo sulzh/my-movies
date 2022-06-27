@@ -3,10 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const lsMovies = localStorage.getItem('favMovies');
 
 interface FavoritesState {
+  filterValue: string;
   favoriteMovies: string[];
 }
 
 const initialState: FavoritesState = {
+  filterValue: '',
   favoriteMovies: lsMovies ? lsMovies.split(',') : [],
 };
 
@@ -22,9 +24,12 @@ export const favoritesSlice = createSlice({
         (id) => id !== `${payload}`
       );
     },
+    setFilterValue: (state, { payload }: PayloadAction<string>) => {
+      state.filterValue = payload;
+    },
   },
 });
 
-export const { setMovie, deleteMovie } = favoritesSlice.actions;
+export const { setMovie, deleteMovie, setFilterValue } = favoritesSlice.actions;
 
 export default favoritesSlice.reducer;
