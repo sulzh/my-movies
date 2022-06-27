@@ -17,3 +17,8 @@ export interface MovieResponceInterface {
   };
   recommendations: BaseMoviesResponceInterface;
 }
+
+export interface SearchRequestParamsInterface {
+  page?: string;
+  query?: string;
+}

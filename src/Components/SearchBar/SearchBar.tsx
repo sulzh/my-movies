@@ -17,7 +17,9 @@ const SearchBar: React.FC<SearchBarTypes> = (props) => {
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(inputValue);
+    if (onSubmit) {
+      onSubmit(inputValue);
+    }
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +39,7 @@ const SearchBar: React.FC<SearchBarTypes> = (props) => {
           placeholder={placeholder}
           onChange={handleOnChange}
         />
-        {!!handleOnSubmit && (
+        {!!onSubmit && (
           <button type="submit" className="btn search-bar__btn">
             <RiSearchLine color="#0006f5" size={25} />
           </button>

@@ -1,0 +1,17 @@
+.pagginaton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  &__btn {
+    display: block;
+    margin-left: 5px;
+    padding-right: 5px;
+
+    &:disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+  }
+}
