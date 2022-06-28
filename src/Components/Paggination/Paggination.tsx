@@ -9,7 +9,7 @@ import './styles.scss';
 
 type PagginationTypes = {
   page: number;
-  setPage: (p: number) => void;
+  setPage: (d: { page: string }) => void;
   totalPages: number;
 };
 
@@ -17,12 +17,14 @@ const Paggination: React.FC<PagginationTypes> = (props) => {
   const { page, totalPages, setPage } = props;
 
   const onPrevClick = () => {
-    setPage(page - 1);
+    if (page === 0) return;
+    setPage({ page: `${page - 1}` });
     window.scrollTo(0, 0);
   };
 
   const onNextClick = () => {
-    setPage(page + 1);
+    if (page === totalPages) return;
+    setPage({ page: `${page + 1}` });
     window.scrollTo(0, 0);
   };
 

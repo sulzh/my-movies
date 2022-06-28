@@ -25,6 +25,11 @@ button {
   border: none;
   background: none;
   -webkit-appearance: none;
+
+  &:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
 }
 
 .container {

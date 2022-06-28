@@ -7,7 +7,7 @@ import './styles.scss';
 type SearchBarTypes = {
   query?: string;
   placeholder?: string;
-  onSubmit?: (s: string) => void;
+  onSubmit?: (d: { query: string }) => void;
   onChange?: (s: string) => void;
 };
 
@@ -17,8 +17,9 @@ const SearchBar: React.FC<SearchBarTypes> = (props) => {
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!inputValue) return;
     if (onSubmit) {
-      onSubmit(inputValue);
+      onSubmit({ query: inputValue });
     }
   };
 
@@ -40,7 +41,11 @@ const SearchBar: React.FC<SearchBarTypes> = (props) => {
           onChange={handleOnChange}
         />
         {!!onSubmit && (
-          <button type="submit" className="btn search-bar__btn">
+          <button
+            type="submit"
+            className="btn search-bar__btn"
+            disabled={!inputValue}
+          >
             <RiSearchLine color="#0006f5" size={25} />
           </button>
         )}

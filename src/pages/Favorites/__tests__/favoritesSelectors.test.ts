@@ -1,28 +1,9 @@
-import { RootState } from '../../../app/store';
 import { getFavoriteMoviesFilterValueSelector } from '../store/selectors';
+import { getStateWith } from '../../../utils/test-utils';
 
 describe('favorites selectors', () => {
   it('filter value should not compute again with the same state', () => {
-    const state: RootState = {
-      favorites: {
-        filterValue: '',
-        favoriteMovies: [],
-      },
-      movies: {
-        queries: {},
-        mutations: {},
-        provided: undefined,
-        subscriptions: {},
-        config: undefined,
-      },
-      search: {
-        queries: {},
-        mutations: {},
-        provided: undefined,
-        subscriptions: {},
-        config: undefined,
-      },
-    };
+    const state = getStateWith();
     getFavoriteMoviesFilterValueSelector.resetRecomputations();
     const result = getFavoriteMoviesFilterValueSelector(state);
     expect(result).toEqual('');

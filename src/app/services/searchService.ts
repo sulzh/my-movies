@@ -26,10 +26,8 @@ export const searchService = createApi({
           ...params,
         },
       }),
-      // transformResponse: (response: BaseMoviesResponceInterface) =>
-      //   response.results,
     }),
   }),
 });
 
-export const { useSearchMoviesQuery } = searchService;
+export const { useLazySearchMoviesQuery } = searchService;

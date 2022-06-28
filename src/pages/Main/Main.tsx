@@ -17,10 +17,10 @@ const Main: React.FC = () => {
   const { data, isLoading } = useGetPopularMoviesQuery(1);
 
   const submitSearch = useCallback(
-    (query: string) => {
+    (params: { query: string }) => {
       navigate({
         pathname: navigation.search,
-        search: createSearchParams({ query }).toString(),
+        search: createSearchParams(params).toString(),
       });
     },
     [navigate]

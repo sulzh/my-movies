@@ -1,13 +1,26 @@
-import React, { ReactElement } from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
-import { store } from '../app/store';
+import { RootState } from '../app/store';
 
-export function renderWithContext(element: ReactElement) {
-  render(
-    <Provider store={store}>
-      <BrowserRouter>{element}</BrowserRouter>
-    </Provider>
-  );
+export function getStateWith(passedState?: any): RootState {
+  const state: RootState = {
+    favorites: {
+      filterValue: '',
+      favoriteMovies: [],
+    },
+    movies: {
+      queries: {},
+      mutations: {},
+      provided: undefined,
+      subscriptions: {},
+      config: undefined,
+    },
+    search: {
+      queries: {},
+      mutations: {},
+      provided: undefined,
+      subscriptions: {},
+      config: undefined,
+    },
+    ...passedState,
+  };
+  return state;
 }
