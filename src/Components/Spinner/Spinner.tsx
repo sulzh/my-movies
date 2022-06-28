@@ -15,7 +15,7 @@ const Spinner: React.FC<SpinnerTypes> = (props) => {
   }
 
   return (
-    <div className="spinner">
+    <div className="spinner" data-testid="spinner">
       <div />
       <div />
       <div />

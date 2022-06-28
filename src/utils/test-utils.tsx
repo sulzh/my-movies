@@ -1,4 +1,12 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+
 import { RootState } from '../app/store';
+
+export function renderWithRouter(element: React.ReactElement) {
+  render(<BrowserRouter>{element}</BrowserRouter>);
+}
 
 export function getStateWith(passedState?: any): RootState {
   const state: RootState = {
