@@ -4,6 +4,8 @@
   "description": "",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.prod.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "webpack-dev-server --open --config webpack/webpack.config.dev.js",
     "dev:hot": "npm run dev -- --hot",
     "test": "jest",
@@ -12,6 +14,7 @@
     "pre-commit": "pretty-quick --staged && npm run lint"
   },
   "author": "Sulzh",
+  "homepage": "https://sulzh.github.io/my-movies/",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.17.10",
@@ -34,6 +37,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
