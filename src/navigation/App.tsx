@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 // Constants
 import { navigation } from './constants';
@@ -13,7 +13,7 @@ import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop>
         <Routes>
           <Route path={navigation.main} element={<Layout />}>
@@ -25,7 +25,7 @@ const App: React.FC = () => {
           </Route>
         </Routes>
       </ScrollToTop>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
