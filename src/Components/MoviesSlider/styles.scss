@@ -1,36 +1,31 @@
 .movies-slider {
-	&__slider {
-		padding-top: 35px;
-	}
+  padding-top: 10px;
 
-	.heading {
-		position: relative;
-		padding-top: 10px;
-		padding-bottom: 0;
-	}
+  &__slider {
+    .slick-list {
+      padding-top: 35px;
+      overflow: hidden;
+    }
 
-	.search-bar {
-		padding-top: 40px;
-	}
+    .slick-track {
+      display: flex;
+    }
+  }
 
-	.swiper-slide {
-		width: auto;
-	}
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90px;
+    max-width: 150px;
+  }
 
-	.swiper-button-prev {
-		left: 70px;
-	}
-
-	.swiper-button-next {
-		right: 70px;
-	}
-
-	.swiper-button-prev,
-	.swiper-button-next {
-		color: #ffffff;
-	}
-
-	.swiper-button-disabled {
-		pointer-events: unset;
-	}
+  .heading {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }

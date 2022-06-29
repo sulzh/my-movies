@@ -1,48 +1,48 @@
 @import '../../theme/variables.scss';
 
 .search-bar {
-	&__form {
-		height: 60px;
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		border-radius: 8px;
-		overflow: hidden;
-		box-sizing: border-box;
-		padding-left: 20px;
-		padding-right: 20px;
-		box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.1);
-	}
+  &__form {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.1);
+  }
 
-	&__input,
-	&__btn {
-		display: block;
-		border: none;
-		outline: none;
-		-webkit-appearance: none;
-	}
+  &__input,
+  &__btn {
+    display: block;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+  }
 
-	&__input {
-		height: 100%;
-		width: calc(100% - 25px);
-		font-size: 20px;
-		font-weight: 400;
-	}
+  &__input {
+    height: 100%;
+    width: calc(100% - 25px);
+    font-size: 20px;
+    font-weight: 400;
+  }
 
-	&__btn {
-		width: 25px;
-		height: 25px;
-		cursor: pointer;
-	}
+  &__btn {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
 }
 
 @media only screen and (max-width: $mobile-viewport) {
-	.search-bar {
-		padding-bottom: 50px;
+  .search-bar {
+    padding-bottom: 0px;
 
-		&__form {
-			height: 50px;
-		}
-	}
+    &__form {
+      height: 50px;
+    }
+  }
 }

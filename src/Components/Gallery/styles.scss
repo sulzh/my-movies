@@ -1,45 +1,53 @@
 @import '../../theme/variables.scss';
 
 .gallery {
-	&__slider {
-		height: 400px;
-		margin-bottom: 20px;
-	}
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-	&__img {
-		width: 100%;
-		height: 100%;
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		object-fit: cover;
-	}
+  &__slider {
+    cursor: grab;
+    height: calc(100% - 50px);
 
-	.swiper-pagination {
-		bottom: 0;
-	}
+    .slick-list {
+      overflow: hidden;
+      height: 100%;
+    }
 
-	.swiper-pagination-bullet-active {
-		background-color: $blue-color;
-	}
+    .slick-track {
+      display: flex;
+      height: 100%;
+    }
 
-	.swiper-slide {
-		width: auto;
-	}
+    .slick-slide {
+      height: 100%;
 
-	.swiper-button-prev {
-		left: 20px;
-	}
+      div {
+        height: 100%;
+      }
+    }
+  }
 
-	.swiper-button-next {
-		right: 20px;
-	}
-	.swiper-button-prev,
-	.swiper-button-next {
-		color: #ffffff;
-	}
+  &__img {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+  }
 
-	.swiper-button-disabled {
-		pointer-events: unset;
-	}
+  .heading {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: $tablet-viewport) {
+  .gallery {
+    height: 300px;
+  }
 }

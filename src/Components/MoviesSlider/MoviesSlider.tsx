@@ -1,8 +1,9 @@
-import React from 'react';
-import { Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/scss';
-import 'swiper/scss/navigation';
+import React, { useRef } from 'react';
+import Slider from 'react-slick';
+import {
+  BsFillArrowLeftSquareFill,
+  BsFillArrowRightSquareFill,
+} from 'react-icons/bs';
 
 // Models
 import { Movie } from '../../utils/models';
@@ -18,33 +19,52 @@ type MoviesSliderTypes = {
 
 const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
   const { data, title } = props;
+  const settings = {
+    infinite: false,
+    arrows: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    variableWidth: true,
+  };
+
+  const ref = useRef(null);
 
   if (!data || data.length === 0) {
     return null;
   }
 
-  const renderMovie = (movie: Movie) => (
-    <SwiperSlide key={movie.id}>
-      <MovieCard {...movie} />
-    </SwiperSlide>
-  );
+  const renderMovie = (movie: Movie) => <MovieCard key={movie.id} {...movie} />;
+
+  const onPrevClick = () => {
+    ref.current?.slickPrev();
+  };
+
+  const onNextClick = () => {
+    ref.current?.slickNext();
+  };
 
   return (
     <div className="movies-slider container">
-      {!!title && (
-        <div className="heading container">
+      <div className="heading container">
+        {!!title && (
           <h2 className="heading__sub-title movies-slider__title">{title}</h2>
+        )}
+        <div className="movies-slider__controls">
+          <button onClick={onPrevClick}>
+            <BsFillArrowLeftSquareFill size={40} color="#0006f5" />
+          </button>
+          <button onClick={onNextClick}>
+            <BsFillArrowRightSquareFill size={40} color="#0006f5" />
+          </button>
         </div>
-      )}
-      <Swiper
-        modules={[Navigation]}
-        navigation={true}
-        slidesPerGroup={1}
-        slidesPerView={4}
-        className="movies-slider__slider"
+      </div>
+      <Slider
+        ref={ref}
+        {...settings}
+        className="movies-slider__slider variable-width"
       >
         {data.map(renderMovie)}
-      </Swiper>
+      </Slider>
     </div>
   );
 };

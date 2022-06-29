@@ -1,3 +1,5 @@
+@import '../../theme/variables.scss';
+
 .search-page {
   &__block {
     display: flex;
@@ -11,5 +13,17 @@
 
   .movie-card {
     width: 25%;
+  }
+}
+
+@media only screen and (max-width: $mobile-viewport) {
+  .search-page {
+    &__block {
+      padding-top: 0px;
+    }
+
+    .movie-card {
+      width: 100%;
+    }
   }
 }

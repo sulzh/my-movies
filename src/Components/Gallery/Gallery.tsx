@@ -1,8 +1,9 @@
-import React from 'react';
-import { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/scss';
-import 'swiper/scss/pagination';
+import React, { useRef } from 'react';
+import Slider from 'react-slick';
+import {
+  BsFillArrowLeftSquareFill,
+  BsFillArrowRightSquareFill,
+} from 'react-icons/bs';
 
 // Constants
 import { IMG_URL } from '../../utils/constants';
@@ -11,42 +12,77 @@ import { Backdrop } from '../../utils/models';
 // Styles
 import './styles.scss';
 
-type MoviesSliderTypes = {
+type GalleryTypes = {
   data: Backdrop[];
 };
 
-const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
+const Gallery: React.FC<GalleryTypes> = (props) => {
   const { data } = props;
+  const settings = {
+    infinite: false,
+    arrows: false,
+    slidesToShow: 3,
+    slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1180,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  const ref = useRef(null);
 
   if (!data || data.length === 0) {
     return null;
   }
 
   const renderImage = ({ file_path }: Backdrop, i: number) => (
-    <SwiperSlide key={`img-${i}`}>
+    <div>
       <div
+        key={`img-${i}`}
         className="gallery__img"
         style={{
           backgroundImage: `url("${IMG_URL}${file_path}")`,
         }}
       />
-    </SwiperSlide>
+    </div>
   );
+
+  const onPrevClick = () => {
+    ref.current?.slickPrev();
+  };
+
+  const onNextClick = () => {
+    ref.current?.slickNext();
+  };
 
   return (
     <div className="gallery">
-      <Swiper
-        modules={[Pagination]}
-        pagination={{ clickable: true }}
-        spaceBetween={0}
-        slidesPerGroup={1}
-        slidesPerView={3}
-        className="gallery__slider"
-      >
+      <div className="heading container">
+        <div className="movies-slider__controls">
+          <button onClick={onPrevClick}>
+            <BsFillArrowLeftSquareFill size={40} color="#0006f5" />
+          </button>
+          <button onClick={onNextClick}>
+            <BsFillArrowRightSquareFill size={40} color="#0006f5" />
+          </button>
+        </div>
+      </div>
+      <Slider ref={ref} {...settings} className="gallery__slider">
         {data.map(renderImage)}
-      </Swiper>
+      </Slider>
     </div>
   );
 };
 
-export default MoviesSlider;
+export default Gallery;
