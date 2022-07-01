@@ -1,12 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Slider from 'react-slick';
-import {
-  BsFillArrowLeftSquareFill,
-  BsFillArrowRightSquareFill,
-} from 'react-icons/bs';
 
 // Constants
 import { IMG_URL } from '../../utils/constants';
+// Components
+import SliderControls from '../SliderContols/SliderControls';
 // Models
 import { Backdrop } from '../../utils/models';
 // Styles
@@ -17,12 +15,16 @@ type GalleryTypes = {
 };
 
 const Gallery: React.FC<GalleryTypes> = (props) => {
+  const ref = useRef(null);
+  const [slideIndex, setSlideIndex] = useState(0);
+
   const { data } = props;
   const settings = {
     infinite: false,
     arrows: false,
     slidesToShow: 3,
     slidesToScroll: 2,
+    beforeChange: (current: number, next: number) => setSlideIndex(next),
     responsive: [
       {
         breakpoint: 1180,
@@ -40,8 +42,6 @@ const Gallery: React.FC<GalleryTypes> = (props) => {
     ],
   };
 
-  const ref = useRef(null);
-
   if (!data || data.length === 0) {
     return null;
   }
@@ -58,25 +58,14 @@ const Gallery: React.FC<GalleryTypes> = (props) => {
     </div>
   );
 
-  const onPrevClick = () => {
-    ref.current?.slickPrev();
-  };
-
-  const onNextClick = () => {
-    ref.current?.slickNext();
-  };
-
   return (
     <div className="gallery">
       <div className="heading container">
-        <div className="movies-slider__controls">
-          <button onClick={onPrevClick}>
-            <BsFillArrowLeftSquareFill size={40} color="#0006f5" />
-          </button>
-          <button onClick={onNextClick}>
-            <BsFillArrowRightSquareFill size={40} color="#0006f5" />
-          </button>
-        </div>
+        <SliderControls
+          sliderRef={ref}
+          slideIndex={slideIndex}
+          slidesLength={data.length - settings.slidesToShow}
+        />
       </div>
       <Slider ref={ref} {...settings} className="gallery__slider">
         {data.map(renderImage)}

@@ -25,7 +25,7 @@ const Favorites: React.FC = () => {
     () =>
       data &&
       data.filter((d) =>
-        d.original_title.toLocaleLowerCase().includes(filterValue)
+        d.original_title.toLowerCase().includes(filterValue.toLowerCase())
       ),
     [data, filterValue]
   );
