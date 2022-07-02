@@ -11,10 +11,11 @@ type SliderControlsTypes = {
   sliderRef: any;
   slideIndex: number;
   slidesLength: number;
+  slidesToShow: number;
 };
 
 const SliderControls: React.FC<SliderControlsTypes> = (props) => {
-  const { sliderRef, slideIndex, slidesLength } = props;
+  const { sliderRef, slideIndex, slidesLength, slidesToShow } = props;
 
   const onPrevClick = () => {
     sliderRef.current.slickPrev();
@@ -29,7 +30,10 @@ const SliderControls: React.FC<SliderControlsTypes> = (props) => {
       <button onClick={onPrevClick} disabled={slideIndex === 0}>
         <BsFillArrowLeftSquareFill size={40} color="#0006f5" />
       </button>
-      <button onClick={onNextClick} disabled={slideIndex === slidesLength}>
+      <button
+        onClick={onNextClick}
+        disabled={slideIndex === slidesLength - slidesToShow}
+      >
         <BsFillArrowRightSquareFill size={40} color="#0006f5" />
       </button>
     </div>

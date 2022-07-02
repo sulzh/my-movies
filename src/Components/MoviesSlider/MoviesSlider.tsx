@@ -1,10 +1,12 @@
-import React, { useRef, useState } from 'react';
-import Slider from 'react-slick';
+import React, { useRef, useState, useCallback } from 'react';
 
 // Models
 import { Movie } from '../../utils/models';
+// Constants
+import { settings } from './constants';
 // Components
 import MovieCard from '../MovieCard/MovieCard';
+import MemoSlider from '../MemoSlider/MemoSlider';
 import SliderControls from '../SliderContols/SliderControls';
 // Styles
 import './styles.scss';
@@ -15,24 +17,22 @@ type MoviesSliderTypes = {
 };
 
 const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
+  const { data, title } = props;
   const ref = useRef(null);
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const { data, title } = props;
-  const settings = {
-    infinite: false,
-    arrows: false,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    variableWidth: true,
-    beforeChange: (current: number, next: number) => setSlideIndex(next),
-  };
+  const beforeChange = useCallback((p: number, n: number) => {
+    setSlideIndex(n);
+  }, []);
+
+  const renderMovie = useCallback(
+    (movie: Movie) => <MovieCard key={movie.id} {...movie} />,
+    []
+  );
 
   if (!data || data.length === 0) {
     return null;
   }
-
-  const renderMovie = (movie: Movie) => <MovieCard key={movie.id} {...movie} />;
 
   return (
     <div className="movies-slider container">
@@ -43,16 +43,18 @@ const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
         <SliderControls
           sliderRef={ref}
           slideIndex={slideIndex}
-          slidesLength={data.length - settings.slidesToShow}
+          slidesLength={data.length}
+          slidesToShow={settings.slidesToShow}
         />
       </div>
-      <Slider
-        ref={ref}
-        {...settings}
-        className="movies-slider__slider variable-width"
-      >
-        {data.map(renderMovie)}
-      </Slider>
+      <MemoSlider
+        innerRef={ref}
+        data={data}
+        settings={settings}
+        beforeChange={beforeChange}
+        renderSlide={renderMovie}
+        className="movies-slider__slider"
+      />
     </div>
   );
 };
