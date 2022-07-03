@@ -1,8 +1,9 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useCallback } from 'react';
 
-// Constants
+// Utils
 import { IMG_URL } from '../../utils/constants';
 import { settings } from './constants';
+import { useSliderControls } from '../SliderContols/hooks';
 // Components
 import MemoSlider from '../MemoSlider/MemoSlider';
 import SliderControls from '../SliderContols/SliderControls';
@@ -18,11 +19,7 @@ type GalleryTypes = {
 const Gallery: React.FC<GalleryTypes> = (props) => {
   const ref = useRef(null);
   const { data } = props;
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  const beforeChange = useCallback((p: number, n: number) => {
-    setSlideIndex(n);
-  }, []);
+  const { slideIndex, beforeChange } = useSliderControls();
 
   const renderImage = useCallback(
     ({ file_path }: Backdrop, i: number) => (

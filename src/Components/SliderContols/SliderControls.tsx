@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { RefObject } from 'react';
+import Slider from 'react-slick';
 import {
   BsFillArrowLeftSquareFill,
   BsFillArrowRightSquareFill,
@@ -8,7 +9,7 @@ import {
 import './styles.scss';
 
 type SliderControlsTypes = {
-  sliderRef: any;
+  sliderRef: RefObject<Slider>;
   slideIndex: number;
   slidesLength: number;
   slidesToShow: number;

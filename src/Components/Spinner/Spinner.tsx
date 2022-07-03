@@ -24,4 +24,4 @@ const Spinner: React.FC<SpinnerTypes> = (props) => {
   );
 };
 
-export default Spinner;
+export default React.memo(Spinner);

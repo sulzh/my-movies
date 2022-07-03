@@ -34,7 +34,7 @@ const Favorites: React.FC = () => {
     () => () => {
       dispatch(setFilterValue(''));
     },
-    []
+    [dispatch]
   );
 
   return (

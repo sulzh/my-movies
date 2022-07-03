@@ -14,7 +14,7 @@ import './styles.scss';
 
 const Main: React.FC = () => {
   const navigate = useNavigate();
-  const { data, isLoading } = useGetPopularMoviesQuery(1);
+  const { data, isFetching } = useGetPopularMoviesQuery(1);
 
   const submitSearch = useCallback(
     (params: { query: string }) => {
@@ -34,8 +34,8 @@ const Main: React.FC = () => {
         </h1>
         <SearchBar onSubmit={submitSearch} />
       </div>
-      <MoviesSlider title="Popular movies" data={data} />
-      <Spinner isSpinning={isLoading} />
+      {!isFetching && <MoviesSlider title="Popular movies" data={data} />}
+      <Spinner isSpinning={isFetching} />
     </div>
   );
 };

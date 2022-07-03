@@ -10,10 +10,8 @@ import Like from '../Like/Like';
 // Styles
 import './styles.scss';
 
-const MovieCard: React.FC<Movie> = React.memo((props) => {
+const MovieCard: React.FC<Movie> = (props) => {
   const { id, poster_path, original_title, release_date, vote_average } = props;
-
-  console.log('render');
 
   return (
     <div className="movie-card">
@@ -45,8 +43,6 @@ const MovieCard: React.FC<Movie> = React.memo((props) => {
       </div>
     </div>
   );
-});
+};
 
-MovieCard.displayName = 'MovieCard';
-
-export default MovieCard;
+export default React.memo(MovieCard);

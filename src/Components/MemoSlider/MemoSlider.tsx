@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import Slider, { Settings } from 'react-slick';
 
 // Models
 import { Movie, Backdrop } from '../../utils/models';
 
 type MemoSliderTypes = {
-  innerRef: any;
+  innerRef: RefObject<Slider>;
   data: Movie[] | Backdrop[];
   settings: Settings;
   className?: string;
@@ -13,7 +13,7 @@ type MemoSliderTypes = {
   renderSlide: (d: Movie | Backdrop, i: number) => React.ReactNode;
 };
 
-const MemoSlider: React.FC<MemoSliderTypes> = React.memo((props) => {
+const MemoSlider: React.FC<MemoSliderTypes> = (props) => {
   const { data, innerRef, settings, className, beforeChange, renderSlide } =
     props;
 
@@ -27,8 +27,6 @@ const MemoSlider: React.FC<MemoSliderTypes> = React.memo((props) => {
       {data.map(renderSlide)}
     </Slider>
   );
-});
+};
 
-MemoSlider.displayName = 'MemoSlider';
-
-export default MemoSlider;
+export default React.memo(MemoSlider);

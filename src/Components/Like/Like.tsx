@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 // Store
@@ -7,6 +7,7 @@ import {
   deleteMovie,
   setMovie,
 } from '../../pages/Favorites/store/favoritesSlice';
+import { getFavoriteMoviesIdsSelector } from '../../pages/Favorites/store/selectors';
 // Styles
 import './styles.scss';
 
@@ -17,18 +18,19 @@ type LikeTypes = {
 const Like: React.FC<LikeTypes> = (props) => {
   const { id } = props;
   const dispatch = useAppDispatch();
-  const favoriteMovies = useAppSelector(
-    (state) => state.favorites.favoriteMovies
+  const favoriteMovies = useAppSelector(getFavoriteMoviesIdsSelector);
+  const isLiked = useMemo(
+    () => favoriteMovies.includes(`${id}`),
+    [favoriteMovies, id]
   );
-  const isLiked = favoriteMovies.includes(`${id}`);
 
-  const toggleLike = () => {
+  const toggleLike = useCallback(() => {
     if (isLiked) {
       dispatch(deleteMovie(id));
     } else {
       dispatch(setMovie(id));
     }
-  };
+  }, [id, isLiked, dispatch]);
 
   return (
     <button className="like" onClick={toggleLike}>
@@ -41,4 +43,4 @@ const Like: React.FC<LikeTypes> = (props) => {
   );
 };
 
-export default Like;
+export default React.memo(Like);

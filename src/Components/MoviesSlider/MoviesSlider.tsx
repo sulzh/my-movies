@@ -1,9 +1,10 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useCallback } from 'react';
 
 // Models
 import { Movie } from '../../utils/models';
-// Constants
+// Utils
 import { settings } from './constants';
+import { useSliderControls } from '../SliderContols/hooks';
 // Components
 import MovieCard from '../MovieCard/MovieCard';
 import MemoSlider from '../MemoSlider/MemoSlider';
@@ -17,18 +18,16 @@ type MoviesSliderTypes = {
 };
 
 const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
-  const { data, title } = props;
   const ref = useRef(null);
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  const beforeChange = useCallback((p: number, n: number) => {
-    setSlideIndex(n);
-  }, []);
+  const { data, title } = props;
+  const { slideIndex, beforeChange } = useSliderControls();
 
   const renderMovie = useCallback(
     (movie: Movie) => <MovieCard key={movie.id} {...movie} />,
     []
   );
+
+  console.log('render');
 
   if (!data || data.length === 0) {
     return null;
@@ -59,4 +58,4 @@ const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
   );
 };
 
-export default MoviesSlider;
+export default React.memo(MoviesSlider);

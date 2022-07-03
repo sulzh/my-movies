@@ -54,4 +54,4 @@ const SearchBar: React.FC<SearchBarTypes> = (props) => {
   );
 };
 
-export default SearchBar;
+export default React.memo(SearchBar);
