@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import './viewport.scss';
 
 h1,
 h2,
@@ -42,16 +42,18 @@ button {
   box-sizing: border-box;
 }
 
-.main {
-  padding-top: 60px;
-  padding-bottom: 100px;
+.page {
+  width: 100%;
+  height: inherit;
+  min-height: inherit;
+  padding-bottom: 60px;
 }
 
 .logo {
   &__link {
     text-decoration: none;
     text-transform: uppercase;
-    color: $blue-color;
+    color: var(--primary-color);
     font-size: 25px;
     font-weight: 800;
     font-family: 'Raleway', sans-serif;
@@ -73,8 +75,17 @@ button {
     font-size: 28px;
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
-    color: $blue-color;
+    color: var(--primary-color);
   }
+}
+
+.primary-color,
+.primary-bg-color {
+  color: var(--primary-color);
+}
+
+.liked-color {
+  color: var(--liked-color);
 }
 
 @media only screen and (max-width: $mobile-viewport) {
@@ -83,8 +94,7 @@ button {
     padding-right: 10px;
   }
 
-  .main {
-    padding-top: 0px;
+  .page {
     padding-bottom: 0px;
   }
 

@@ -4,8 +4,6 @@ import { Outlet } from 'react-router-dom';
 
 // Components
 import Header from '../Header/Header';
-// Styles
-import './styles.scss';
 
 const propTypes = {
   children: PropTypes.instanceOf(Object),

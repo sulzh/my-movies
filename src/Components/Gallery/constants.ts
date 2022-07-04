@@ -1,3 +1,5 @@
+import { WEB_VIEWPORT, TABLET_VIEWPORT } from '../../utils/constants';
+
 export const settings = {
   infinite: false,
   arrows: false,
@@ -5,13 +7,13 @@ export const settings = {
   slidesToScroll: 2,
   responsive: [
     {
-      breakpoint: 1180,
+      breakpoint: WEB_VIEWPORT,
       settings: {
         slidesToShow: 2,
       },
     },
     {
-      breakpoint: 768,
+      breakpoint: TABLET_VIEWPORT,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,

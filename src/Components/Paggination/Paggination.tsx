@@ -35,14 +35,20 @@ const Paggination: React.FC<PagginationTypes> = (props) => {
         onClick={onPrevClick}
         disabled={page === 1}
       >
-        <BsFillArrowLeftSquareFill size={40} color="#0006f5" />
+        <BsFillArrowLeftSquareFill
+          size={40}
+          className="primary-color"
+        />
       </button>
       <button
         className="pagginaton__btn"
         onClick={onNextClick}
         disabled={page === totalPages}
       >
-        <BsFillArrowRightSquareFill size={40} color="#0006f5" />
+        <BsFillArrowRightSquareFill
+          size={40}
+          className="primary-color"
+        />
       </button>
     </div>
   );

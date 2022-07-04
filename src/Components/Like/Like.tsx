@@ -33,11 +33,20 @@ const Like: React.FC<LikeTypes> = (props) => {
   }, [id, isLiked, dispatch]);
 
   return (
-    <button className="like" onClick={toggleLike}>
+    <button
+      className="like"
+      onClick={toggleLike}
+    >
       {isLiked ? (
-        <FaHeart size={24} color="#f44336" />
+        <FaHeart
+          size={24}
+          className="liked-color"
+        />
       ) : (
-        <FaRegHeart size={24} color="#0006f5" />
+        <FaRegHeart
+          size={24}
+          className="primary-color"
+        />
       )}
     </button>
   );

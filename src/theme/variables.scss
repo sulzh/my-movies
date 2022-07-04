@@ -1,4 +1,8 @@
-$primary-color: #fbfbfb;
-$blue-color: #0006f5;
-$tablet-viewport: 768px;
-$mobile-viewport: 640px;
+:root {
+  --background-color: #fbfbfb;
+  --light-color: #f7f8f9;
+  --primary-color: #0006f5;
+  --liked-color: #f44336;
+  --text-main-color: #000000;
+  --text-light-color: #aaaac9;
+}

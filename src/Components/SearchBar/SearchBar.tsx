@@ -32,7 +32,10 @@ const SearchBar: React.FC<SearchBarTypes> = (props) => {
 
   return (
     <div className="search-bar">
-      <form className="search-bar__form" onSubmit={handleOnSubmit}>
+      <form
+        className="search-bar__form"
+        onSubmit={handleOnSubmit}
+      >
         <input
           type="text"
           className="search-bar__input"
@@ -46,7 +49,10 @@ const SearchBar: React.FC<SearchBarTypes> = (props) => {
             className="btn search-bar__btn"
             disabled={!inputValue}
           >
-            <RiSearchLine color="#0006f5" size={25} />
+            <RiSearchLine
+              size={25}
+              className="primary-color"
+            />
           </button>
         )}
       </form>

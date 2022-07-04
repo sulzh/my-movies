@@ -1,4 +1,4 @@
-@import '../../theme/variables.scss';
+@import '../../theme/viewport.scss';
 
 .search-page {
   &__block {
@@ -13,6 +13,14 @@
 
   .movie-card {
     width: 25%;
+  }
+}
+
+@media only screen and (max-width: $tablet-viewport) {
+  .search-page {
+    .movie-card {
+      width: 50%;
+    }
   }
 }
 

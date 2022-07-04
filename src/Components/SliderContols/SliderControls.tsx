@@ -28,14 +28,23 @@ const SliderControls: React.FC<SliderControlsTypes> = (props) => {
 
   return (
     <div className="slider-controls">
-      <button onClick={onPrevClick} disabled={slideIndex === 0}>
-        <BsFillArrowLeftSquareFill size={40} color="#0006f5" />
+      <button
+        onClick={onPrevClick}
+        disabled={slideIndex === 0}
+      >
+        <BsFillArrowLeftSquareFill
+          size={40}
+          className="primary-color"
+        />
       </button>
       <button
         onClick={onNextClick}
         disabled={slideIndex === slidesLength - slidesToShow}
       >
-        <BsFillArrowRightSquareFill size={40} color="#0006f5" />
+        <BsFillArrowRightSquareFill
+          size={40}
+          className="primary-color"
+        />
       </button>
     </div>
   );
