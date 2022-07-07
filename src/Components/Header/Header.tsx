@@ -4,6 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 // Constants
 import { navigation } from '../../navigation/constants';
+import { THEME } from '../../utils/constants';
 // Components
 import ToggleBtn from '../ToggleBtn/ToggleBtn';
 // Styles
@@ -40,13 +41,13 @@ const Header: React.FC<HeaderProps> = (props) => {
           MyMovies
         </NavLink>
         <div className="header__theme-btn">
-          {theme === 'dark' ? (
+          {theme === THEME.DARK ? (
             <span className="header__theme-icon">🌝</span>
           ) : (
             <span className="header__theme-icon">🌞</span>
           )}
           <ToggleBtn
-            toggleOn={theme === 'dark'}
+            toggleOn={theme === THEME.DARK}
             onClick={switchTheme}
           />
         </div>

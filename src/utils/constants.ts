@@ -5,3 +5,8 @@ export const IMG_URL = 'https://image.tmdb.org/t/p/original';
 export const WEB_VIEWPORT = 1181;
 export const TABLET_VIEWPORT = 821;
 export const MOBILE_VIEWPORT = 641;
+
+export enum THEME {
+  LIGHT = 'light',
+  DARK = 'dark',
+}

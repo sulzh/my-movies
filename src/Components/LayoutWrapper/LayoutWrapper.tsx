@@ -5,6 +5,8 @@ import { useLocalStorage } from '@rehooks/local-storage';
 
 // Components
 import Header from '../Header/Header';
+// Constants
+import { THEME } from '../../utils/constants';
 // Styles
 import './styles.scss';
 
@@ -16,11 +18,11 @@ const LayoutWrapper = () => {
   const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const [theme, setTheme] = useLocalStorage(
     'theme',
-    defaultDark ? 'dark' : 'light'
+    defaultDark ? THEME.DARK : THEME.LIGHT
   );
 
   const switchTheme = useCallback(() => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const newTheme = theme === THEME.LIGHT ? THEME.DARK : THEME.LIGHT;
     setTheme(newTheme);
   }, [theme, setTheme]);
 
