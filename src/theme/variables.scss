@@ -1,8 +1,17 @@
 :root {
   --background-color: #fbfbfb;
-  --light-color: #f7f8f9;
   --primary-color: #0006f5;
   --liked-color: #f44336;
   --text-main-color: #000000;
   --text-light-color: #aaaac9;
+  --input-bg-color: #ffffff;
+}
+
+[data-theme='dark'] {
+  --background-color: #262631;
+  --primary-color: #008eff;
+  --liked-color: #f44336;
+  --text-main-color: #ffffff;
+  --text-light-color: #aaaac9;
+  --input-bg-color: #ffffff1a;
 }

@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
+import { useLocalStorage } from '@rehooks/local-storage';
 
 // Components
 import Header from '../Header/Header';
+// Styles
+import './styles.scss';
 
 const propTypes = {
   children: PropTypes.instanceOf(Object),
 };
 
 const LayoutWrapper = () => {
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [theme, setTheme] = useLocalStorage(
+    'theme',
+    defaultDark ? 'dark' : 'light'
+  );
+
+  const switchTheme = useCallback(() => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  }, [theme, setTheme]);
+
   return (
-    <div className="page">
-      <Header />
+    <main
+      className="main"
+      data-theme={theme}
+    >
+      <Header
+        theme={theme}
+        switchTheme={switchTheme}
+      />
       <div className="content">
         <Outlet />
       </div>
-    </div>
+    </main>
   );
 };
 

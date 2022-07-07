@@ -23,11 +23,14 @@ const MoviesSlider: React.FC<MoviesSliderTypes> = (props) => {
   const { slideIndex, beforeChange } = useSliderControls();
 
   const renderMovie = useCallback(
-    (movie: Movie) => <MovieCard key={movie.id} {...movie} />,
+    (movie: Movie) => (
+      <MovieCard
+        key={movie.id}
+        {...movie}
+      />
+    ),
     []
   );
-
-  console.log('render');
 
   if (!data || data.length === 0) {
     return null;

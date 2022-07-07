@@ -4,10 +4,19 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 // Constants
 import { navigation } from '../../navigation/constants';
+// Components
+import ToggleBtn from '../ToggleBtn/ToggleBtn';
 // Styles
 import './styles.scss';
 
-const Header: React.FC = () => {
+type HeaderProps = {
+  theme: string;
+  switchTheme: () => void;
+};
+
+const Header: React.FC<HeaderProps> = (props) => {
+  const { theme, switchTheme } = props;
+
   const renderFavoriteIcon = (isActive: boolean) =>
     isActive ? (
       <FaHeart
@@ -30,6 +39,17 @@ const Header: React.FC = () => {
         >
           MyMovies
         </NavLink>
+        <div className="header__theme-btn">
+          {theme === 'dark' ? (
+            <span className="header__theme-icon">🌝</span>
+          ) : (
+            <span className="header__theme-icon">🌞</span>
+          )}
+          <ToggleBtn
+            toggleOn={theme === 'dark'}
+            onClick={switchTheme}
+          />
+        </div>
         <NavLink
           to={navigation.favorites}
           className="header__link"

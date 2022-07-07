@@ -5,7 +5,7 @@
   &__wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: 100%;
   }
 
@@ -16,5 +16,17 @@
     font-size: 25px;
     font-weight: 800;
     font-family: 'Raleway', sans-serif;
+    margin-right: auto;
+  }
+
+  &__theme-btn {
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+  }
+
+  &__theme-icon {
+    font-size: 26px;
+    padding-right: 8px;
   }
 }

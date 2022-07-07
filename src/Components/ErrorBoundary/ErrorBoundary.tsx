@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ErrorInfo } from 'react';
 
 // Styles
 import './styles.scss';
@@ -8,32 +8,33 @@ type WarningProps = {
 };
 
 type WarningState = {
-  isError: boolean;
+  hasError: boolean;
 };
 
-export default class Warning extends React.Component<
+export default class ErrorBoundary extends React.Component<
   WarningProps,
   WarningState
 > {
   state: WarningState = {
-    isError: false,
+    hasError: false,
   };
 
   static getDerivedStateFromError() {
-    return { isError: true };
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error(error, errorInfo);
   }
 
   render() {
-    const { isError } = this.state;
+    const { hasError } = this.state;
     const { children } = this.props;
-    return isError ? (
-      <div className="error-boundary">
-        <span className="error-boundary__text">
-          Sorry, something went wrong.
-        </span>
-      </div>
-    ) : (
-      children
-    );
+
+    if (hasError) {
+      return <h1>Something went wrong.</h1>;
+    }
+
+    return children;
   }
 }
